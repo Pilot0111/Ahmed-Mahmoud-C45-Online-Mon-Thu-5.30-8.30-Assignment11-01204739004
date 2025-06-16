@@ -10,7 +10,8 @@ body {
 
 h3 {
   color: tomato;
-
+  text-align: center;
+  justify-content: center;
   background-image: linear-gradient(to right, #3ca55c, #b5ac49);
   background-clip: text;
   -webkit-background-clip: text;
