@@ -1,0 +1,59 @@
+body {
+  background-color: #f7ecde;
+}
+
+.part1 {
+  border-width: 2px 0 2px 0;
+  border-style: dotted;
+  border-color: #352e28;
+}
+
+h3 {
+  color: tomato;
+
+  background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   font-family: cursive;
+  font-weight: 800;
+  font-style: normal;
+}
+
+h1{
+    font-size: 62px;
+    font-family: "Pacifico", cursive;
+  font-weight: 500;
+  font-style: normal;
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+h1::before{
+    content: "";
+    background-color: #fec260;
+    position: absolute;
+    inset: 0;
+    top: 50%;
+    z-index: -1;
+    
+}
+
+
+
+.btn-submit{
+    color: #fff;
+    background: #d1512d;
+    border-color: #d1512d;
+transition: 0.3s;
+padding: 10px 50px 10px 50px;
+ 
+}
+
+
+.btn-submit:hover{
+   background: #bb4120;
+border-color: #a03315;
+color: white;
+}
