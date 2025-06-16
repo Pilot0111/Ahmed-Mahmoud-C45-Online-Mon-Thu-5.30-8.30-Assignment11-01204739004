@@ -9,7 +9,7 @@ body {
 }
 
 h3 {
-  color: tomato;
+  color: rgb(71, 255, 148);
 
   background-image: linear-gradient(to right, #3ca55c, #b5ac49);
   background-clip: text;
