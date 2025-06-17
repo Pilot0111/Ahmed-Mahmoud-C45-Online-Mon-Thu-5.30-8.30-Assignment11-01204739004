@@ -38,7 +38,7 @@ function displayURL() {
                   <button class="btn btn-visit" onclick="openURL(${i})"><i class="fa-solid fa-eye pe-2"></i> Visit</button>
                 </td>
                 <td>
-                  <button class="btn btn-delete " onclick="deleteURL(${i})"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                  <button class="btn btn-delete " onclick="openDeleteAlert(${i})"><i class="fa-solid fa-trash-can"></i> Delete</button>
                 </td>
              </tr>
 `;
@@ -104,3 +104,44 @@ function showAlert() {
     `,
   });
 }
+
+
+
+function openDeleteAlert(index){
+
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    deleteURL(index);
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your Bookmark not deleted :) :)",
+      icon: "error"
+    });
+  }
+});}
