@@ -76,20 +76,19 @@ function isValidURL(url) {
       url = `https://www.${url}`;
     }
   }
-//   if (/^[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,5}$/.test(url)) {
-//     url = `https://www.${url}`;
-//   } else if (/^(www\.)[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)) {
-//     url = `https://${url}`;
-//   }else if(/^(https:\/\/)(?!www\.).*[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)){
-// url = `https://www.${url.slice(8)}`;
-//   }else if(/^(http:\/\/)(?!www\.).*[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)){
-// url = `https://www.${url.slice(7)}`;
-//   }
+  //   if (/^[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,5}$/.test(url)) {
+  //     url = `https://www.${url}`;
+  //   } else if (/^(www\.)[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)) {
+  //     url = `https://${url}`;
+  //   }else if(/^(https:\/\/)(?!www\.).*[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)){
+  // url = `https://www.${url.slice(8)}`;
+  //   }else if(/^(http:\/\/)(?!www\.).*[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)){
+  // url = `https://www.${url.slice(7)}`;
+  //   }
   var pattern = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/;
   var isValid = pattern.test(url);
-console.log(url)
-  return { isValid, 
-      url };
+  console.log(url);
+  return { isValid, url };
 }
 
 function showAlert() {
@@ -105,43 +104,41 @@ function showAlert() {
   });
 }
 
-
-
-function openDeleteAlert(index){
-
-
-
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger"
-  },
-  buttonsStyling: false
-});
-swalWithBootstrapButtons.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonText: "Yes, delete it!",
-  cancelButtonText: "No, cancel!",
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    deleteURL(index);
-    swalWithBootstrapButtons.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
+function openDeleteAlert(index) {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+  swalWithBootstrapButtons
+    .fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        deleteURL(index);
+        swalWithBootstrapButtons.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your Bookmark not deleted :) :)",
+          icon: "error",
+        });
+      }
     });
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire({
-      title: "Cancelled",
-      text: "Your Bookmark not deleted :) :)",
-      icon: "error"
-    });
-  }
-});}
+}
