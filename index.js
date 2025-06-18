@@ -14,6 +14,11 @@ function addURL() {
     name: siteName.value,
     Url: siteUrl.value,
   };
+
+  if (siteName.value.trim().length < 3) {
+  showAlert("Site name must contain at least 3 characters.");
+  return;
+}
   var validResult = isValidURL(siteUrl.value);
   URL.Url = validResult.url;
 
@@ -85,24 +90,12 @@ function isValidURL(url) {
   //   }else if(/^(http:\/\/)(?!www\.).*[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/.test(url)){
   // url = `https://www.${url.slice(7)}`;
   //   }
-  var pattern = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{3,}\.[a-zA-Z]{2,5}$/;
+  var pattern = /^(https?:\/\/www\.)[a-zA-Z0-9-]{3,}(\.[a-zA-Z]{2,5})+$/;
   var isValid = pattern.test(url);
   console.log(url);
   return { isValid, url };
 }
 
-function showAlert() {
-  Swal.fire({
-    icon: "error",
-    title: "Site Name or URL is not valid",
-    html: `
-      <p class="text-danger-emphasis fw-bold fs-4 py-2">Please follow the rules below:</p>
-      <p class="text-bg-danger text-start">➤ Site name must contain at least 3 characters</p>
-     <p class="text-bg-danger text-start">➤ Site URL must be a valid one</p>
-      
-    `,
-  });
-}
 
 function openDeleteAlert(index) {
   const swalWithBootstrapButtons = Swal.mixin({
@@ -141,4 +134,17 @@ function openDeleteAlert(index) {
         });
       }
     });
+}
+
+
+function showAlert(msg = "Site Name or URL is not valid") {
+  Swal.fire({
+    icon: "error",
+    title: msg,
+    html: `
+      <p class="text-danger-emphasis fw-bold fs-4 py-2">Please follow the rules below:</p>
+      <p class="text-bg-danger text-start">➤ Site name must contain at least 3 characters</p>
+      <p class="text-bg-danger text-start">➤ Site URL must be a valid one</p>
+    `,
+  });
 }
