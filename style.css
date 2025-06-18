@@ -9,20 +9,22 @@ body {
 }
 
 h3 {
-  color: tomato;
-
+  /* text-align: center; */
+  /* justify-content: center; */
   background-image: linear-gradient(to right, #3ca55c, #b5ac49);
-  background-clip: text;
+  background-size: 85%;
+  /* background-clip: text; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-   font-family: cursive;
+  font-family: cursive;
   font-weight: 800;
-  font-style: normal;
+  /* font-style: normal; */
+  font-size: 25px;
 }
 
-h1{
-    font-size: 62px;
-    font-family: "Pacifico", cursive;
+h1 {
+  font-size: 62px;
+  font-family: "Pacifico", cursive;
   font-weight: 500;
   font-style: normal;
   position: relative;
@@ -30,30 +32,67 @@ h1{
   margin: auto;
 }
 
-h1::before{
-    content: "";
-    background-color: #fec260;
-    position: absolute;
-    inset: 0;
-    top: 50%;
-    z-index: -1;
-    
+h1::before {
+  content: "";
+  background-color: #fec260;
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  margin: auto;
+  text-align: center;
+  z-index: -1;
+  transition: 0.5s all;
+}
+
+h1:hover::before {
+  top: 20%;
+}
+
+.btn-submit {
+  color: #fff;
+  background: #d1512d;
+  border-color: #d1512d;
+  transition: 0.3s;
+  padding: 10px 50px 10px 50px;
+}
+
+.btn-submit:hover {
+  background: #bb4120;
+  border-color: #a03315;
+  color: white;
+}
+
+.btn-visit {
+  color: #fff;
+  background-color: #9eb23b;
+  border-color: #9eb23b;
+  transition: 0.3s all;
+}
+
+.btn-visit:hover {
+  color: #fff;
+  background-color: #8a9e23;
+  border-color: #6e8018;
 }
 
 
+.btn-delete {
+ color: #fff;
+ background-color: #eb1d36;
+    border-color: #eb1d36;
+   }
 
-.btn-submit{
-    color: #fff;
-    background: #d1512d;
-    border-color: #d1512d;
-transition: 0.3s;
-padding: 10px 50px 10px 50px;
- 
+.btn-delete:hover{
+  color: white;
+background-color: #d30820;
+border-color: #ba081d;
 }
-
 
 .btn-submit:hover{
    background: #bb4120;
 border-color: #a03315;
 color: white;
 } 
+
+
+/* end of css */
