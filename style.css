@@ -87,4 +87,13 @@ h1:hover::before {
 background-color: #d30820;
 border-color: #ba081d;
 
+<<<<<<< HEAD
 }
+=======
+
+.btn-submit:hover{
+   background: #bb4120;
+border-color: #a03315;
+color: white;
+} 
+>>>>>>> fff9a4bba2296a265c077b1ada6cbd16a5f59c93

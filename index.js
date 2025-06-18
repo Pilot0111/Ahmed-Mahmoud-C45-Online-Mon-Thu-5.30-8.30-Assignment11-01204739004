@@ -7,7 +7,7 @@ var mainIndex = 0;
 if (localStorage.getItem("URL") != null) {
   bookmarksArr = JSON.parse(localStorage.getItem("URL"));
   displayURL();
-}
+} 
 
 function addURL() {
   var URL = {
